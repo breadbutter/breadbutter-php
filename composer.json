@@ -1,0 +1,18 @@
+{
+    "name": "logonlabs/logonlabs-php",
+    "type": "library",
+    "version": "1.0.0",
+    "description": "LogonLabs PHP API SDK",
+    "authors": [
+        {
+            "name": "Howie Lee",
+            "email": "hlee@logonlabs.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-0": {
+            "BreadButter": "src/"
+        }
+    }
+}
