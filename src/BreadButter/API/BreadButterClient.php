@@ -3,7 +3,10 @@
 namespace BreadButter\API;
 
 use \Exception as Exception;
+use BreadButter\API\Connection as Connection;
+use BreadButter\API\IDPX as IDPX;
 use BreadButter\EventValidationTypes as EventValidationTypes;
+
 /*
  *   BreadButter API Client
  */

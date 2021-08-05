@@ -1,12 +1,12 @@
 {
-    "name": "logonlabs/logonlabs-php",
+    "name": "breadbutter/breadbutter-php",
     "type": "library",
     "version": "1.0.0",
-    "description": "LogonLabs PHP API SDK",
+    "description": "BreadButter PHP API SDK",
     "authors": [
         {
             "name": "Howie Lee",
-            "email": "hlee@logonlabs.com"
+            "email": "hlee@breadbutter.io"
         }
     ],
     "require": {},

@@ -9,7 +9,7 @@ use BreadButter\API\Response as Response;
  */
 
 class Connection {
-    private $api_url = 'https://api.logonlabs.com/';
+    private $api_url = 'https://api.breadbutter.io/';
     private $app_secret = false;
 
     private $curl;
@@ -129,7 +129,9 @@ class Connection {
     public function get($cmd, $query = false) {
         $url = $this->api_url . $cmd;
 
-        $this->initCall();
+        $this->initCall();;
+        $this->applyExtraHeaders();
+        $this->handleHeaders();
 
         if (is_array($query)) {
             $url = sprintf("%s?%s", $url, http_build_query($query));
