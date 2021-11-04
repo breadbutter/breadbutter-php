@@ -29,7 +29,7 @@ class BreadButterClient {
      *  - api_key
      */
 
-    const token = 'token';
+    const authentication_token = 'authentication_token';
 
 
     public function __construct($settings) {
@@ -65,37 +65,8 @@ class BreadButterClient {
         return $this->idpx_request;
     }
 
-    public function updateEvent($event_id, $local_success, $tags) {
-        if (empty($event_id)) {
-            throw new Exception("'event_id' must be provided");
-        }
-
-        $data = array(
-            'app_id' => $this->app_id
-        );
-
-        if (!empty($local_success)) {
-            if (!in_array($local_success, EventValidationTypes::$eventValidationTypes)) {
-                throw new Exception("'local_success' must be either Pass, Fail, or NotApplicable");
-            }
-            $data['local_success'] = $local_success;
-        }
-
-        if (!empty($tags)) {
-            $data['tags'] = $tags;
-        }
-
-        return $this->idpx()->updateEvent($event_id, $data);
-    }
-
-
-    public function ping() {
-        return $this->idpx()->ping($this->app_id);
-    }
-
-
-    public function getAuthentication($token) {
-        return $this->idpx()->getAuthentication($this->app_id, $token);
+    public function getAuthentication($authentication_token) {
+        return $this->idpx()->getAuthentication($this->app_id, $authentication_token);
     }
 
 }

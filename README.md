@@ -5,16 +5,15 @@ The official BreadButter PHP library.
 ## Bread Butter API
 ---
 
-- Prior to coding, some configuration is required at https://app.breadbutter.io/app/#app-settings.
+- Prior to coding, some configuration is required at https://app.breadbutter.io/app/#/app-settings.
 
 - For the full Developer Documentation please visit: https://app.breadbutter.io/api/
 
 ---
 ### Instantiating a new client
 
-- `APP_ID` can be found in [App Settings](https://app.breadbutter.io/app/#/app-settings)
-- `APP_SECRET` is configured at [App Secrets](https://app.breadbutter.io/app/#/app-secrets)
-- `BreadButter_API_ENDPOINT` should be set to `https://api.breadbutter.io`
+- `APP_ID` and `APP_SECRET` can be found in [App Settings](https://app.breadbutter.io/app/#/app-settings)
+- `BREADBUTTER_API_ENDPOINT` should be set to `https://api.breadbutter.io`
 
 Create a new instance of `BreadButterClient`.  
 ```php
@@ -23,7 +22,7 @@ use BreadButter\API\BreadButterClient as BreadButterClient;
 $breadButterClient = new BreadButterClient(array(
     'app_id' => '{APP_ID}',
     'app_secret' => '{APP_SECRET}',
-    'api_path' => '{BreadButter_API_ENDPOINT}',
+    'api_path' => '{BREADBUTTER_API_ENDPOINT}',
 ));
 ```
 ---
@@ -34,9 +33,13 @@ The StartAuthentication function in the JS library begins the Bread Butter manag
 The following example demonstrates what to do once the `callback Url` has been used by our system to redirect the user back to your page:
 ```php
 <?php
-$token = $_REQUEST['token'];
-$loginData = $breadButterClient->getAuthentication($token);
-if ($loginData['auth_success']) {
-     //authentication and validation succeeded. proceed with post-auth workflows (ie, create a user session token for your system).
-}
+$authenticationToken = $_REQUEST['authentication_token'];
+$loginData = $breadButterClient->getAuthentication($authenticationToken);
+
+$authData = $loginData['auth_data'];
+
+$email = $authData['email_address'];
+$firstName = $authData['first_name'];
+$lastName = $authData['last_name'];
+$profileImage = $authData['profile_image_url'];
 ```

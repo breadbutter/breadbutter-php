@@ -16,7 +16,6 @@ class IdentityProviders {
     const APPLE = 'apple';
     const BASECAMP = 'basecamp';
     const DROPBOX = 'dropbox';
-    const FITBIT = 'fitbit';
     const PLANNINGCENTER = 'planningcenter';
     const TWITCH = 'twitch';
 
