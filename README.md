@@ -36,7 +36,8 @@ The following example demonstrates what to do once the `callback Url` has been u
 $authenticationToken = $_REQUEST['authentication_token'];
 $loginData = $breadButterClient->getAuthentication($authenticationToken);
 
-$authData = $loginData['auth_data'];
+$body = $loginData['body'];
+$authData = $body['auth_data'];
 
 $email = $authData['email_address'];
 $firstName = $authData['first_name'];
