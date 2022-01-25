@@ -7,7 +7,7 @@ The official BreadButter PHP library.
 
 - Prior to coding, some configuration is required at https://app.breadbutter.io/app/#/app-settings.
 
-- For the full Developer Documentation please visit: https://app.breadbutter.io/api/
+- For the full Developer Documentation please visit: https://breadbutter.io/api/
 
 ---
 ### Instantiating a new client
