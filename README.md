@@ -1,36 +1,36 @@
-# Bread Butter PHP
+## The official PHP library for Bread & Butter
+This library allows you to connect your application to the authentication process of Bread & Butter. A user will be redirected to your application when a user is authenticated. Once this authentication is retrieved by your application you can perform an action like creating a user in your system or creating a session for that users.
 
-The official BreadButter PHP library.
+### Installation
+```
+composer require breadbutter/breadbutter-php
+```
+## API
+>For more information on the full **DIY Quick Start Guide** visit https://app.breadbutter.io/api/
 
-## Bread Butter API
----
+Once the user's authentication is processed on by Bread & Butter, the user is redirected to a callback interface defined in your Bread & Butter app. The example below is a simple interface that accepts the request from Bread & Butter and processes the authentication.
 
-- Prior to coding, some configuration is required at https://app.breadbutter.io/app/#/app-settings.
+> After the the interface is created you will need to update the Callback URL with the URL to this interface in your app settings here: https://app.breadbutter.io/app/#/app-settings
 
-- For the full Developer Documentation please visit: https://breadbutter.io/api/
+### Processing an authentication request
 
----
-### Instantiating a new client
+*Create a new instance of `BreadButterClient`*
 
-- `APP_ID` and `APP_SECRET` can be found in [App Settings](https://app.breadbutter.io/app/#/app-settings)
-- `BREADBUTTER_API_ENDPOINT` should be set to `https://api.breadbutter.io`
+- `APP_ID` can be found in https://app.breadbutter.io/app/#/app-settings
+- `APP_SECRET` is configured at https://app.breadbutter.io/app/#/app-settings
 
-Create a new instance of `BreadButterClient`.  
 ```php
 <?php
-use BreadButter\API\BreadButterClient as BreadButterClient;
+use BreadButter\API\BreadButterClient;
 $breadButterClient = new BreadButterClient(array(
     'app_id' => '{APP_ID}',
     'app_secret' => '{APP_SECRET}',
-    'api_path' => '{BREADBUTTER_API_ENDPOINT}',
 ));
 ```
----
-### Login QuickStart
-The StartAuthentication function in the JS library begins the Bread Butter managed login process.
->Further documentation on starting the login process via our JavaScript client can be found at our GitHub page [here](https://github.com/BreadButter/BreadButter-js). 
+*Retrieve authentication from Bread & Butter server*
 
-The following example demonstrates what to do once the `callback Url` has been used by our system to redirect the user back to your page:
+> You can find the detailed API response here: https://breadbutter.io/api/server-api/
+
 ```php
 <?php
 $authenticationToken = $_REQUEST['authentication_token'];
@@ -43,4 +43,13 @@ $email = $authData['email_address'];
 $firstName = $authData['first_name'];
 $lastName = $authData['last_name'];
 $profileImage = $authData['profile_image_url'];
+$destinationURL = $authData['options']['destination_url'];
+//Use information above to create user in your system, create a session, etc
+```
+
+*Redirect the user back to your website*
+
+```php
+<?php
+header( "Location: $destinationURL" );
 ```
