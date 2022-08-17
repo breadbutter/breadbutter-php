@@ -42,8 +42,11 @@ class Connection {
 
     private function parseBody($curl, $response)
     {
-        $this->response['body'] = $response;
-        return;
+        if (!isset($this->response['body'])) {
+            $this->response['body'] = "";
+        }
+        $this->response['body'] .= $response;
+        return strlen($response);
     }
 
 
