@@ -43,7 +43,7 @@ $email = $authData['email_address'];
 $firstName = $authData['first_name'];
 $lastName = $authData['last_name'];
 $profileImage = $authData['profile_image_url'];
-$destinationURL = $authData['options']['destination_url'];
+$destinationURL = $body['options']['destination_url'];
 //Use information above to create user in your system, create a session, etc
 ```
 
